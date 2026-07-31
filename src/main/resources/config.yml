@@ -1,0 +1,95 @@
+# ==============================================================================
+#                             ChatGuard Configuration
+# ==============================================================================
+
+# Global settings
+prefix: "&8[&c&lChatGuard&8] "
+
+# ------------------------------------------------------------------------------
+# Swear & Profanity Filter
+# ------------------------------------------------------------------------------
+swear-filter:
+  enabled: true
+  # Action mode: "BLOCK" (cancels message) or "CENSOR" (replaces matching words)
+  mode: "CENSOR"
+  censor-replacement: "****"
+  patterns:
+    - "(?i)\\b(fuck|shit|bitch|asshole|bastard|cunt|dick|pussy)\\b"
+    - "(?i)\\b(nigger|nigga|retard|faggot)\\b"
+
+# ------------------------------------------------------------------------------
+# Anti-Advertising Filter (IPs, Domains, URLs)
+# ------------------------------------------------------------------------------
+advertising-filter:
+  enabled: true
+  # Action mode: "BLOCK" (cancels message)
+  mode: "BLOCK"
+  whitelist:
+    - "play.yourserver.com"
+    - "yourserver.com"
+  patterns:
+    # IPv4 address matching pattern
+    - "(?i)\\b(?:[0-9]{1,3}\\.){3}[0-9]{1,3}(?::[0-9]{1,5})?\\b"
+    # Domain pattern (e.g., example.com, example.net, test.org)
+    - "(?i)\\b(?:[a-zA-Z0-9-]+\\.)+(?:com|net|org|co|uk|de|io|store|gg|me|online|xyz|us|ca)\\b"
+    # Obfuscated domains (e.g. example (dot) com, example [dot] net)
+    - "(?i)\\b[a-zA-Z0-9-]+\\s*(?:\\(\\s*dot\\s*\\)|\\[\\s*dot\\s*\\]|\\{\\s*dot\\s*\\}|\\s+dot\\s+)\\s*(?:com|net|org|io|gg|store)\\b"
+
+# ------------------------------------------------------------------------------
+# Caps Percentage Filter
+# ------------------------------------------------------------------------------
+caps-filter:
+  enabled: true
+  # Minimum message character length before checking caps
+  min-message-length: 6
+  # Maximum allowed capital letter ratio percentage (0.0 to 100.0)
+  max-caps-percentage: 60.0
+  # Action mode: "LOWERCASE" (converts to lower case) or "BLOCK" (cancels message)
+  mode: "LOWERCASE"
+
+# ------------------------------------------------------------------------------
+# Anti-Spam & Flood Control
+# ------------------------------------------------------------------------------
+cooldown:
+  enabled: true
+  # Seconds required between consecutive chat messages
+  seconds: 3.0
+
+spam-filter:
+  enabled: true
+  # Time frame in seconds to check for duplicate/similar messages
+  history-seconds: 15
+  # Similarity threshold percentage (0.0 to 100.0) to consider a message repetitive
+  similarity-percentage: 80.0
+
+# ------------------------------------------------------------------------------
+# Global Chat Silence State
+# ------------------------------------------------------------------------------
+chat-muted: false
+
+# ------------------------------------------------------------------------------
+# Staff Violation Notifications
+# ------------------------------------------------------------------------------
+staff-alerts:
+  enabled: true
+  play-sound: true
+  sound-name: "BLOCK_NOTE_BLOCK_PLING"
+  # Alert message format sent to staff with 'chatguard.alerts' permission
+  format: "&c&l[ALERT] &f{player} &7triggered &e{reason}&7: &f{message}"
+
+# ------------------------------------------------------------------------------
+# Plugin Messages
+# ------------------------------------------------------------------------------
+messages:
+  no-permission: "&cYou do not have permission to execute this command."
+  chat-is-muted: "&cServer chat is currently muted. You cannot send messages."
+  cooldown-warning: "&cPlease wait &e{time}s &cbefore sending another message."
+  spam-warning: "&cPlease refrain from repeating similar messages."
+  swear-blocked: "&cYour message was blocked because it contained prohibited language."
+  advertising-blocked: "&cAdvertising IP addresses or domain links is strictly prohibited."
+  caps-blocked: "&cYour message contained too many capital letters."
+  chat-cleared: "&aServer chat has been cleared by &e{player}&a."
+  chat-muted-on: "&cServer chat has been &lMUTED &cby &e{player}&c."
+  chat-muted-off: "&aServer chat has been &lUNMUTED &aby &e{player}&a."
+  config-reloaded: "&aChatGuard configuration reloaded successfully!"
+  usage: "&eUsage: /chatguard [clear|mutechat|reload|help]"

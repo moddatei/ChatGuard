@@ -1,0 +1,45 @@
+name: ChatGuard
+version: '${version}'
+main: net.chatguard.ChatGuardPlugin
+api-version: '1.20'
+author: ChatGuard
+description: Production-grade Minecraft Paper/Spigot 1.20+ chat filtering plugin.
+
+commands:
+  chatguard:
+    description: Main ChatGuard command interface.
+    aliases: [cg]
+    permission: chatguard.admin
+    usage: /<command> [clear|mutechat|reload|help]
+
+permissions:
+  chatguard.admin:
+    description: Grants full administrative access to ChatGuard.
+    default: op
+  chatguard.clear:
+    description: Allows clearing the global server chat.
+    default: op
+  chatguard.mutechat:
+    description: Allows toggling global server chat silence.
+    default: op
+  chatguard.alerts:
+    description: Receives staff alert notifications for filter violations.
+    default: op
+  chatguard.bypass.swear:
+    description: Bypasses profanity and swear filtering checks.
+    default: op
+  chatguard.bypass.advertising:
+    description: Bypasses anti-advertising and IP/domain filtering.
+    default: op
+  chatguard.bypass.caps:
+    description: Bypasses capital letter percentage restrictions.
+    default: op
+  chatguard.bypass.cooldown:
+    description: Bypasses chat message cooldown timer.
+    default: op
+  chatguard.bypass.spam:
+    description: Bypasses duplicate and repetitive message detection.
+    default: op
+  chatguard.bypass.mute:
+    description: Allows speaking when global chat is muted.
+    default: op

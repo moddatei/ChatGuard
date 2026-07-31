@@ -1,0 +1,20 @@
+# Build outputs
+build/
+target/
+out/
+.gradle/
+*.jar
+*.war
+*.ear
+
+# IDE & Editor files
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
